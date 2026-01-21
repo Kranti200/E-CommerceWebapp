@@ -7,7 +7,6 @@ import Signup from "./components/Signup";
 import ProductList from "./components/ProductList";
 import Cart from "./components/Cart";
 import CategoryList from "./components/CategoryList";
-import PaymentPage from "./components/PaymentPage"; // ✅ Added import
 
 // ✅ Layout component (to show/hide Navbar)
 function Layout({ children }) {
@@ -23,13 +22,6 @@ function Layout({ children }) {
   );
 }
 
-// ✅ Wrapper to pass amount & email to PaymentPage
-function PaymentWrapper() {
-  const location = useLocation();
-  const { amount, email } = location.state || { amount: 0, email: "test@example.com" };
-  return <PaymentPage amount={amount} email={email} />;
-}
-
 // ✅ Main App Component
 function App() {
   return (
@@ -41,7 +33,6 @@ function App() {
           <Route path="/products" element={<ProductList />} />
           <Route path="/categories" element={<CategoryList />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/payment" element={<PaymentWrapper />} /> {/* ✅ Added payment route */}
           <Route path="*" element={<ProductList />} />
         </Routes>
       </Layout>
